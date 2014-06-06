@@ -1,4 +1,3 @@
-Honux School
+Honux
 ============
-Online Course Management and Examination SW
--------------------------------------------
+Honux web page
