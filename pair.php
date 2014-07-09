@@ -29,8 +29,8 @@
 		</div>
 		<div class="navbar-collapse collapse">
 		  <ul class="nav navbar-nav">
-			<li class="active"><a href="#">Home</a></li>
-			<li><a href="#about">Learn</a></li>
+			<li><a href="index.html">Home</a></li>
+			<li class="active"><a href="#learnt">Learn</a></li>
 			<li><a href="#contact">Donate</a></li>
 			<li class="dropdown">
 			  <a href="#" class="dropdown-toggle" data-toggle="dropdown">More<b class="caret"></b></a>
@@ -57,33 +57,112 @@
 	  </div>
 	</div>
 
+<script>
+var all =[];
+<?php
+$db = new SQLite3('db/dba.db');
+$count = $db->query('select max(class) from people')->fetchArray()[0];
+for ($i = 1; $i <= $count; $i++) {
+	echo "var t = [];\n";
+	$str = "";
+	$stmt = $db->prepare('select name from people where class=:count order by random()');
+	$stmt->bindValue(':count', $i, SQLITE3_INTEGER);
+	$result = $stmt->execute();
+	$odd = 0;
+	while($row = $result->fetchArray()) {
+		$odd++;
+		if ($odd %2 != 0) {
+			$str .= "$row[0] : ";
+			echo "$str\n";
+		}
+		else {
+			$str .=$row[0];
+			echo "t.push('$str');\n";
+			$str="";
+		}
+	}
+	if ($odd %2 !=0)
+		echo "t.push('$str 솔로');\n";
+	echo "all.push(t);\n";
+}
+?>
+
+</script>
 
 <!-- Main jumbotron for a primary marketing message or call to action -->
 	<div class="jumbotron">
 	  <div class="container">
-		<h1>Welcome to Honux!</h1>
-		<p>호눅스 홈에 오신 것을 환영합니다. </p>
+		<h1>Database Advanced</h1>
+		<p>2014년도 2학기 데이터베이스 어드밴스드 수업 페이지</p>
 		<!--<p><a class="btn btn-primary btn-lg">Learn more &raquo;</a></p> -->
 	  </div>
 	</div>
 
 	<div class="container">
-	  <!-- Example row of columns -->
 	  <div class="row">
-		<div class="col-lg-4">
-		  <h2>Downloads</h2>
-		  <p> 수업에 필요한 다양한 파일들을 다운받을 수 있습니다. </p>
-		  <p><a class="btn btn-info" href="files.php">Go &raquo;</a></p>
+		<div class="col-sm-6">
+			<div class="panel panel-primary"> 
+				<div class="panel panel-heading">
+				<h3 class="panel-title"> 오늘의 짝을 골라봅시다. </h3>
+				</div>
+				<div class="panel-body">
+					<div class="btn-group"> 
+<?php
+for($i = 1; $i <= $count; $i++) {
+	echo "<button type='button' id='btn$i' class='btn btn-default'> $i 반";
+	echo "</button>\n";
+}
+?>
+					</div>
+					<button onclick="funcPair()" class="btn btn-sm btn-success">GO
+						<span class="glyphicon glyphicon-pencil"></span>
+					</button>
+				</div>
 		</div>
-		<div class="col-lg-4">
-		  <h2>DB Advance</h2>
-		  <p>NHN NEXT 2014년도 2학기 Database Advance</p>
-		  <p><a class="btn btn-info" href="dba.php">Go &raquo;</a></p>
-	   </div>
-	  </div>
+	</div>
+	</div>
+	</div>
 
+	<div class="container">
+		<div class = "row">
+			<div class = "col-sm-6">
+				<div class="panel panel-primary"> 
+					<div class="panel panel-heading">
+						<h3 class="panel-title"> 오늘의 짝</h3>
+					</div>
+					<div class="panel-body">
+						<p id="result"> 결과 </p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<script>
+var numClass = 1;
+var text = document.getElementById("result");
+<?php
+for ($i = 1; $i <= $count; $i++) {
+	echo "$('#btn$i').click(function() { numClass = $i; });\n";
+}
+?>
+
+function funcPair() {
+	//text.innerHTML = all[numClass -1];
+	var list = all[numClass -1];
+	var result = "<div class='table table-striped'>\n"
+				+"<table class='table table-striped'>\n"
+	result += "<tbody>\n";
+	
+	for(var i in list) {
+		result += "<tr><td>" + list[i] + "</td></tr>\n";
+	}
+	result += "</tbody></table><div>\n";
+	text.innerHTML = result;
+}
+
+</script>
 	  <hr>
-
 	  <footer>
 		<p>&copy; Honux 2014 </p>
 	  </footer> </div> <!-- /container -->

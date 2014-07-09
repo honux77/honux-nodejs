@@ -29,8 +29,8 @@
 		</div>
 		<div class="navbar-collapse collapse">
 		  <ul class="nav navbar-nav">
-			<li class="active"><a href="#">Home</a></li>
-			<li><a href="#about">Learn</a></li>
+			<li><a href="index.html">Home</a></li>
+			<li class="active"><a href="#learnt">Learn</a></li>
 			<li><a href="#contact">Donate</a></li>
 			<li class="dropdown">
 			  <a href="#" class="dropdown-toggle" data-toggle="dropdown">More<b class="caret"></b></a>
@@ -61,8 +61,8 @@
 <!-- Main jumbotron for a primary marketing message or call to action -->
 	<div class="jumbotron">
 	  <div class="container">
-		<h1>Welcome to Honux!</h1>
-		<p>호눅스 홈에 오신 것을 환영합니다. </p>
+		<h1>Database Advanced</h1>
+		<p>2014년도 2학기 데이터베이스 어드밴스드 수업 페이지</p>
 		<!--<p><a class="btn btn-primary btn-lg">Learn more &raquo;</a></p> -->
 	  </div>
 	</div>
@@ -71,14 +71,14 @@
 	  <!-- Example row of columns -->
 	  <div class="row">
 		<div class="col-lg-4">
-		  <h2>Downloads</h2>
-		  <p> 수업에 필요한 다양한 파일들을 다운받을 수 있습니다. </p>
-		  <p><a class="btn btn-info" href="files.php">Go &raquo;</a></p>
+		  <h2>Pair Programming</h2>
+		  <p>오늘의 짝을 골라봅시다. <p>
+		  <p><a class="btn btn-info" href="pair.php">Go &raquo;</a></p>
 		</div>
 		<div class="col-lg-4">
-		  <h2>DB Advance</h2>
-		  <p>NHN NEXT 2014년도 2학기 Database Advance</p>
-		  <p><a class="btn btn-info" href="dba.php">Go &raquo;</a></p>
+		  <h2>Next Cafe </h2>
+		  <p>넥스트 카페 바로가기 </p>
+		  <p><a class="btn btn-info" href="http://cafe.nhnnext.org/dba142">Go &raquo;</a></p>
 	   </div>
 	  </div>
 
