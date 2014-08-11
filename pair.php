@@ -61,7 +61,8 @@
 var all =[];
 <?php
 $db = new SQLite3('db/dba.db');
-$count = $db->query('select max(class) from people')->fetchArray()[0];
+$ansArray = $db->query('select max(class) from people')->fetchArray();
+$count = $ansArray[0];
 for ($i = 1; $i <= $count; $i++) {
 	echo "var t = [];\n";
 	$str = "";
