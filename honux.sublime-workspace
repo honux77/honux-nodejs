@@ -1,0 +1,255 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"k",
+				"keyCode"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "var express = require('express');\nvar router = express.Router();\n\n/* GET home page. */\n\nrouter.get('/', function(req, res) {\n  var db = req.db;\n  var class = db.get('')	\n  res.render('index', { title: 'Honux CS' });\n});\n\n\n//mongodb test page\nrouter.get('/userlist', function(req, res) {\n	var db = req.db;\n	var collection = db.get('usercollection');\n	collection.find({}, {}, function(e, docs) {\n		res.render('userlist', {\n			\"userlist\" : docs\n		});\n	});\n});\n\nrouter.get('/newuser', function(req, res) {\n	res.render('newuser', {title: 'Add New User' });\n});\n\n/* Post to Add User Service */\nrouter.post('/adduser', function(req, res) {\n	var db = req.db;\n	var userName = req.body.username;\n	var userEmail = req.body.useremail;\n\n	var collection = db.get('usercollection');\n\n	collection.insert({\n		\"username\": userName,\n		\"email\": userEmail\n	}, function(err, doc) {\n		if (err) {\n			res.send(\"There was a problem adding the information to db\");\n		} else { //If it worked, set the header so the address \n			res.location(\"userlist\");\n			res.redirect(\"userlist\");\n		}\n	});\n});\n\nmodule.exports = router;\n",
+			"file": "node_honux/routes/index.js",
+			"file_size": 1095,
+			"file_write_time": 130595193969852783,
+			"settings":
+			{
+				"buffer_size": 1093,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "node_honux/views/layout.jade",
+			"settings":
+			{
+				"buffer_size": 1004,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "node_honux/views/index.jade",
+			"settings":
+			{
+				"buffer_size": 1245,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 360.0,
+		"selected_items":
+		[
+			[
+				"pack",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 499.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/호영/Documents/work/2014_2학기/데이터베이스advanced/강의자료/4 몽고디비/sample.csv",
+		"/D/dev/honux/node_honux/public/main.html",
+		"/C/Perl64/html/release.html",
+		"/C/Users/호영/Documents/work/GAME/울티마 7 - Exult/faq.html",
+		"/D/dev/2014-02-HTML5-1/todolist.js",
+		"/D/dev/2014-02-HTML5-1/index.html",
+		"/D/games/love evolution/hc3-setu-onlinema.html",
+		"/D/dev/2014-02-HTML5-1/asset/todolist.js"
+	],
+	"find":
+	{
+		"height": 0.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "node_honux/routes/index.js",
+					"settings":
+					{
+						"buffer_size": 1093,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								348,
+								348
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "node_honux/views/layout.jade",
+					"settings":
+					{
+						"buffer_size": 1004,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1004,
+								1004
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "node_honux/views/index.jade",
+					"settings":
+					{
+						"buffer_size": 1245,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								600,
+								600
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true
+}
