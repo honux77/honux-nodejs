@@ -1,3 +1,3 @@
-Honux
+honux-nodejs
 ============
-Honux web page
+node.js version honux homepage
